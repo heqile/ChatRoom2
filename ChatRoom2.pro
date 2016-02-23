@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     clientframe.cpp \
     serverframe.cpp \
     tcpclient.cpp \
-    tcpserver.cpp
+    tcpserver.cpp \
+    tcpserversocket.cpp
 
 HEADERS  += mainwindow.h \
     clientframe.h \
     serverframe.h \
     tcpclient.h \
-    tcpserver.h
+    tcpserver.h \
+    tcpserversocket.h
 
 FORMS    += mainwindow.ui \
     clientframe.ui \

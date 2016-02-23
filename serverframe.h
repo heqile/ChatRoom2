@@ -2,6 +2,7 @@
 #define SERVERFRAME_H
 
 #include <QDialog>
+#include "tcpserver.h"
 
 namespace Ui {
 class ServerFrame;
@@ -17,6 +18,15 @@ public:
 
 private:
     Ui::ServerFrame *ui;
+    tcpServer *mtcpsServer;
+    int port;
+
+signals:
+    void signalCreateServer(int port);
+
+public slots:
+    void slotCreateServer();
+    void slotServerUpdated(QString msg);
 };
 
 #endif // SERVERFRAME_H

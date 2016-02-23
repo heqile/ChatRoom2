@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include "tcpserversocket.h"
 
 class tcpServer : public QTcpServer
 {
@@ -13,15 +14,15 @@ public:
 
 private:
 
-    QList<QTcpSocket*> tcpClientList;
+    QList<tcpServerSocket*> tcpClientList;
     QStringList textList;
 signals:
-    void ServerUpdate();
+    void signalServerUpdate(QString msg);
 
 public slots:
     void onNewConnection();
-    void onClientUpdated();
-    void onClientDisconnected();
+    void onClientUpdated(QString msg);
+    void onClientDisconnected(int descriptor);
     void onCreateServer(int port);
 };
 

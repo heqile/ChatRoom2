@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QMessageBox>
+#include <QDebug>
 
 class tcpClient : public QTcpSocket
 {

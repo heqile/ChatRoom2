@@ -2,20 +2,22 @@
 
 tcpServer::tcpServer(QObject *parent) : QTcpServer(parent)
 {
+ //   tcpServerSocket *test = new tcpServerSocket(this);
     connect(this,SIGNAL(newConnection()),this,SLOT(onNewConnection()));
 }
 
 void tcpServer::onNewConnection()
 {
 
-    tcpServerSocket *newsocket = new tcpServerSocket;
+    tcpServerSocket *newsocket = new tcpServerSocket(this);
     connect(newsocket,SIGNAL(signalDisconnect(int)),this,SLOT(onClientDisconnected(int)));
     connect(newsocket,SIGNAL(signalReadyRead(QString)),this,SLOT(onClientUpdated(QString)));
-    connect(this,SIGNAL(signalServerUpdate(QString)),newsocket,SLOT(slotServerUpdate(QString)));
+  //  connect(this,SIGNAL(signalServerUpdate(QString)),newsocket,SLOT(slotServerUpdate(QString)));
     newsocket->setSocketDescriptor(this->nextPendingConnection()->socketDescriptor());
 
     tcpClientList.append(newsocket);
     //qDebug() << "newsocket->socketDescriptor()";
+    qDebug() << tcpClientList.at(0)->socketDescriptor();
 }
 
 void tcpServer::onClientUpdated(QString msg)

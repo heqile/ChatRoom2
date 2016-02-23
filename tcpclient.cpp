@@ -12,7 +12,7 @@ void tcpClient::slotSend(QString msg, int length)
 //    qDebug() << QString::number(i);
     qDebug() <<msg;
     bool i = this->flush();
-    qDebug() << i;
+   // qDebug() << i;
     if(this->waitForBytesWritten(100))
         qDebug() << "send";
 }

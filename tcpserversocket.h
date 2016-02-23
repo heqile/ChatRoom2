@@ -5,14 +5,12 @@
 #include <QTcpSocket>
 #include <QDebug>
 
-class tcpServerSocket : public QTcpSocket
+class tcpServerSocket : public QObject
 {
     Q_OBJECT
 public:
     explicit tcpServerSocket(QObject *parent = 0);
-
-private:
-   // QtcpSocket *mtcpSocket;
+    QTcpSocket *mtcpSocket;
 signals:
     void signalDisconnect(int descriptor);
     void signalReadyRead(QString msg);

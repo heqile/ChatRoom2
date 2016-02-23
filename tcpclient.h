@@ -18,6 +18,7 @@ signals:
 
 public slots:
     void slotSend(QString msg, int length);
+    void slotReceive();
     void slotDisconnect();
     bool slotConnect(QString address, int port);
 

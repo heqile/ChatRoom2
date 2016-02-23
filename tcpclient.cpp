@@ -11,10 +11,18 @@ void tcpClient::slotSend(QString msg, int length)
     this->write(msg.toLatin1(),length);
 //    qDebug() << QString::number(i);
     qDebug() <<msg;
-    bool i = this->flush();
+     this->flush();
    // qDebug() << i;
     if(this->waitForBytesWritten(100))
         qDebug() << "send";
+}
+
+void tcpClient::slotReceive()
+{
+    qDebug() << "ok";
+    QString msg;
+    msg = this->readAll();
+    emit signalServerUpdate(msg);
 }
 
 void tcpClient::slotDisconnect()

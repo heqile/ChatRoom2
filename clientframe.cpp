@@ -12,6 +12,7 @@ ClientFrame::ClientFrame(QWidget *parent) :
     connect(ui->pushButton_Send,SIGNAL(clicked(bool)),this,SLOT(onSend()));
     connect(mclient,SIGNAL(signalServerUpdate(QString)),this,SLOT(onServerUpdate(QString)));
     connect(mclient,SIGNAL(disconnected()),this,SLOT(onDisconnected()));
+    connect(mclient,SIGNAL(readyRead()),mclient,SLOT(slotReceive()));
 }
 
 ClientFrame::~ClientFrame()

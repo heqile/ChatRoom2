@@ -8,6 +8,7 @@ tcpServer::tcpServer(QObject *parent) : QTcpServer(parent)
 
 void tcpServer::onServerStop()
 {
+    emit signalServerStop();
     this->close();
     //socked performs
     emit signalServerStopped();
@@ -20,7 +21,7 @@ void tcpServer::onNewConnection()
     newsocket->mtcpSocket = this->nextPendingConnection();
     connect(newsocket,SIGNAL(signalDisconnect(int)),this,SLOT(onClientDisconnected(int)));
     connect(newsocket,SIGNAL(signalReadyRead(QString)),this,SLOT(onClientUpdated(QString)));
-
+    connect(this,SIGNAL(signalServerStop()),newsocket,SLOT(slotServerStop()));
     connect(newsocket->mtcpSocket,SIGNAL(disconnected()),newsocket,SLOT(slotDisconnect()));
     connect(newsocket->mtcpSocket,SIGNAL(readyRead()),newsocket,SLOT(slotReadyRead()));
     connect(this,SIGNAL(signalServerUpdate(QString)),newsocket,SLOT(slotServerUpdate(QString)));

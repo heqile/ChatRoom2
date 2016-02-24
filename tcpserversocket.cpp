@@ -5,6 +5,11 @@ tcpServerSocket::tcpServerSocket(QObject *parent) : QObject(parent)
 
 }
 
+void tcpServerSocket::slotServerStop()
+{
+    mtcpSocket->disconnect();
+}
+
 void tcpServerSocket::slotDisconnect()
 {
     int descriptor = 0;

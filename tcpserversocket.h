@@ -16,6 +16,7 @@ signals:
     void signalReadyRead(QString msg);
 
 public slots:
+    void slotServerStop();
     void slotDisconnect();
     void slotReadyRead();
     void slotServerUpdate(QString msg);

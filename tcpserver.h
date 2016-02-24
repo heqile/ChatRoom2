@@ -19,6 +19,7 @@ private:
 signals:
     void signalServerUpdate(QString msg);
     void signalServerStopped();
+    void signalServerStop();
     void signalServerCreated();
 
 public slots:

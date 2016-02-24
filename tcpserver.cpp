@@ -6,6 +6,13 @@ tcpServer::tcpServer(QObject *parent) : QTcpServer(parent)
     connect(this,SIGNAL(newConnection()),this,SLOT(onNewConnection()));
 }
 
+void tcpServer::onServerStop()
+{
+    this->close();
+    //socked performs
+    emit signalServerStopped();
+}
+
 void tcpServer::onNewConnection()
 {
 
@@ -48,5 +55,6 @@ void tcpServer::onCreateServer(int port)
 {
     this->listen(QHostAddress::Any, port);
     if(this->isListening())
-        qDebug() << "server start";
+        emit signalServerCreated();
+        //qDebug() << "server start";
 }

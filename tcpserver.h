@@ -18,8 +18,11 @@ private:
     QStringList textList;
 signals:
     void signalServerUpdate(QString msg);
+    void signalServerStopped();
+    void signalServerCreated();
 
 public slots:
+    void onServerStop();
     void onNewConnection();
     void onClientUpdated(QString msg);
     void onClientDisconnected(int descriptor);

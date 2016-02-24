@@ -23,8 +23,11 @@ private:
 
 signals:
     void signalCreateServer(int port);
+    void signalServerStop();
 
 public slots:
+    void slotServerCreated();
+    void slotServerStopped();
     void slotCreateServer();
     void slotServerUpdated(QString msg);
 };

@@ -15,8 +15,10 @@ public:
 signals:
     void signalServerUpdate(QString msg);
     void signalDisconnected(int clientdescritpor);
+    void signalServerStop();
 
 public slots:
+    void slotServerStop();
     void slotSend(QString msg, int length);
     void slotReceive();
     void slotDisconnect();

@@ -21,6 +21,7 @@ private:
     QString name;
 public slots:
     void onEnterOrExitRoom();
+    void onServerStop();
     void onSend();
     void onServerUpdate(QString msg);
     void onDisconnected();

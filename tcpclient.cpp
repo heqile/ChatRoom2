@@ -3,7 +3,12 @@
 
 tcpClient::tcpClient(QObject *parent) : QTcpSocket(parent)
 {
+    //connect(this,SIGNAL(disconnected()),this,SLOT(slotServerStop()));
+}
 
+void tcpClient::slotServerStop()
+{
+       emit signalServerStop();
 }
 
 void tcpClient::slotSend(QString msg, int length)
@@ -22,7 +27,10 @@ void tcpClient::slotReceive()
     qDebug() << "ok";
     QString msg;
     msg = this->readAll();
-    emit signalServerUpdate(msg);
+    if(msg == "Server Stopped")
+        slotServerStop();
+    else
+        emit signalServerUpdate(msg);
 }
 
 void tcpClient::slotDisconnect()

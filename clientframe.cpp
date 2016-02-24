@@ -13,6 +13,7 @@ ClientFrame::ClientFrame(QWidget *parent) :
     connect(mclient,SIGNAL(signalServerUpdate(QString)),this,SLOT(onServerUpdate(QString)));
     connect(mclient,SIGNAL(disconnected()),this,SLOT(onDisconnected()));
     connect(mclient,SIGNAL(readyRead()),mclient,SLOT(slotReceive()));
+    connect(mclient,SIGNAL(signalServerStop()),this,SLOT(onServerStop()));
 }
 
 ClientFrame::~ClientFrame()
@@ -59,4 +60,11 @@ void ClientFrame::onEnterOrExitRoom()
         mclient->slotDisconnect();
         ui->pushButton_Enter->setText("Enter");
     }
+}
+
+void ClientFrame::onServerStop()
+{
+     qDebug() << "1";
+    ui->textBrowser->append("Server stopped");
+    ui->pushButton_Enter->setText("Enter");
 }

@@ -7,7 +7,9 @@ tcpServerSocket::tcpServerSocket(QObject *parent) : QObject(parent)
 
 void tcpServerSocket::slotServerStop()
 {
-    mtcpSocket->disconnect();
+    mtcpSocket->write("Server Stopped");
+    mtcpSocket->flush();
+    mtcpSocket->close();
 }
 
 void tcpServerSocket::slotDisconnect()

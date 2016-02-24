@@ -32,8 +32,8 @@ void tcpClient::slotDisconnect()
 
 bool tcpClient::slotConnect(QString address, int port)
 {
-    //this->connectToHost(address,port);
-    this->connectToHost("127.0.0.1",1234);
+    this->connectToHost(address,port);
+    //this->connectToHost("",1234);
     return this->waitForConnected(3000);
 
 }

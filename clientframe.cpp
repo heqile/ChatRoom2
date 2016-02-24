@@ -22,7 +22,7 @@ ClientFrame::~ClientFrame()
 
 void ClientFrame::onSend()
 {
-    QString text = ui->lineEdit_text->text();
+    QString text = ui->lineEdit_Name->text() + ": " + ui->lineEdit_text->text();
     int len = text.length();
     mclient->slotSend(text, len);
 }
